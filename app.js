@@ -17,7 +17,6 @@ var appcontrolpanel = new Vue({
                     'size': 20
                 },
                 success: function(data) {
-                    console.log(data);
                     data = JSON.parse(data);
                     appbfgen.length = [];
                     for (i = 0; i < data.length; i++) {
@@ -57,6 +56,10 @@ var appdetails = new Vue({
     el: '#appdetails',
     data: {
         display: 'Ready',
+        type: '',
+        building: '',
+        unit: '',
+        bandn: '',
         seleted: false
     },
     methods: {
@@ -66,22 +69,35 @@ var appdetails = new Vue({
 var appbfgen = new Vue({
     el: '#appbfgen',
     data: {
-        battlefield: [
-            [
-                ['test', 'y-meng'],
-                ['test', 'n-meng']
-            ],
-            [
-                ['test', 'y-meng'],
-                ['test', 'n-meng']
-            ]
-        ],
+        battlefield: [],
         length: [0, 1]
     },
     methods: {
         mousein: function(x, y) {
             appdetails.seleted = true;
+            // appdetails.display = appbfgen.battlefield[x][y];
+            var type = '';
+            switch (appbfgen.battlefield[x][y][2]) {
+                case 1:
+                    type = 'Ground';
+                    break;
+                case 2:
+                    type = 'Mountain'
+                    break;
+                case 3:
+                    type = 'Mud';
+                    break;
+                case 4:
+                    type = 'Grass Field';
+                    break;
+                default:
+                    type = 'Sea';
+            }
             appdetails.display = 'Coordinate: ' + x + ':' + y;
+            appdetails.type = 'Block type: ' + type;
+            appdetails.building = 'Building: ';
+            appdetails.unit = 'Unit: ';
+            appdetails.bandn = 'Buff/Nerfs: ';
         },
         mouseout: function(x, y) {
             if (appdetails.seleted) {
