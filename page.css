@@ -28,19 +28,34 @@ td {
 }
 
 .n-meng {
-    border: 3px solid #BE81F7;
+    border: 1px solid black;
     background-color: #f9f9f9;
 }
 
 .muntion-meng {
-    background-color: #A4A4A4;
-    color: white;
+    border: 3px solid #8A0808;
 }
 
 .field-meng {
-    background-color: #A9F5D0;
+    border: 3px solid #A5DF00;
 }
 
 .mud-meng {
-    background-color: #F6CED8;
+    border: 3px solid #01DFD7;
+}
+
+.tblue-meng {
+    background-color: #8181F7;
+}
+
+.tred-meng {
+    background-color: #FA5858;
+}
+
+.tyellow-meng {
+    background-color: #F7D358;
+}
+
+.tgreen-meng {
+    background-color: #9AFE2E;
 }

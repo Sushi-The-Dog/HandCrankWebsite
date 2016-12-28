@@ -17,19 +17,80 @@
                 <div class="col-md-3 column cpanal-meng">
                     <div id="appmain">
                         {{ message }}
+                        <a v-on:click="ShowH"><b>Show/Hide Menu</b></a>
                     </div>
                     <div id="appcontrolpanel">
                         <div class="button-group button-block">
                             <button v-on:click="genmap" type="button" class="button button-royal button-longshadow-left button-rounded button-raised">New Map</button>
                             <button v-on:click="loadmap" type="button" class="button button-caution button-longshadow-left button-rounded button-raised">Load Map</button>
                         </div>
+                        <a v-on:click="genspawn" type="button" class="button button-longshadow-left button-rounded button-action button-raised">Start Spawn</a>
                     </div>
                     <div id="appdetails">
-                        {{ display }}<br>
+                        <h3>{{ display }}</h3><br>
+                        <b>Block Information</b><br>
+                        Block Type:
                         {{ type }}<br>
+                        Building:
                         {{ building }}<br>
+                        Unit:
                         {{ unit }}<br>
-                        {{ bandn }}
+                        Buff/Nerfs:
+                        {{ bandn }}<br>
+                        <b>Block Resources</b><br>
+                        Food:
+                        {{ rescoursef }}<br>
+                        Production:
+                        {{ rescoursep }}<br>
+                        Culture:
+                        {{ rescoursec }}<br>
+                        Gold:
+                        {{ rescourseg }}<br>
+                        Happiness:
+                        {{ rescourseh }}
+                        <br>
+                    </div>
+                    <div id="appplayer">
+                        <b>Empire Resource</b><br>
+                        Food:
+                        {{ food }}<br>
+                        Production:
+                        {{ production }}<br>
+                        Culture:
+                        {{ culture }}<br>
+                        Gold:
+                        {{ gold }}<br>
+                        Happiness:
+                        {{ happiness }}
+                        <hr>
+                    </div>
+                    <div id="appturn" style="display:none;">
+                        <a v-on:click="mine" type="button" class="button button-royal button-longshadow-left button-block button-rounded button-raised">
+                            <b>Collect
+                            </b>a<b>
+                                Resource</b>
+                        </a>
+                        <a v-on:click="train" type="button" class="button button-royal button-longshadow-left button-block button-rounded button-raised">
+                            <b>Train
+                            </b>some<b>
+                                Units</b>
+                        </a>
+                        <a v-on:click="build" type="button" class="button button-royal button-longshadow-left button-block button-rounded button-raised">
+                            <b>Build
+                            </b>an<b>
+                                Accessories</b>
+                        </a>
+                        <a v-on:click="gonext" type="button" class="button button-highlight button-longshadow-left button-block button-rounded button-raised">
+                            <b>{{actionneed}}</b>
+                            left to<b>
+                                ACTION</b>
+                        </a>
+                        <br>
+                        <a v-on:click="nextturn" type="button" class="button button-caution button-longshadow-left button-block button-rounded button-raised">
+                            <b>{{nextmessage}}</b>
+                            {{parttwomessage}}
+                            <b>NEXT TURN</b>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-9 column">

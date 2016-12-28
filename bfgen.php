@@ -1,7 +1,9 @@
 <?php
 $Gmode = $_GET['mode'];
 $Gsize = $_GET['size'];
-
+$seares = [1,0,0,0,0];
+$edgeres = [1,2,2,2,1];
+$empty = [0,0,0];
 function ranarea($ran)
 {
     if ($ran == 0) {
@@ -14,6 +16,32 @@ function ranarea($ran)
         return 'field-meng';
     }
     return 'n-meng';
+}
+function randres($ran, $limit, $leg)
+{
+    $leg -=1;
+    $res = [0,0,0,0,0,0];
+    $limit += $leg;
+    switch ($ran) {
+    case 0:
+      $limit+=1;
+    break;
+    case 1:
+      $limit += 3;
+    break;
+    case 2:
+      $limit += 4;
+    break;
+    default:
+      $limit +=2;
+  }
+    for ($x=0;$x<5;$x++) {
+        $ran = mt_rand(0, $limit);
+        $res[$x] = $ran;
+        $res[5] += $ran;
+    }
+
+    return $res;
 }
 function rannum($ran)
 {
@@ -41,35 +69,35 @@ switch ($Gmode) {
   for ($x = 0;$x<$Gsize-1;$x++) {
       $ran = mt_rand(0, 6);
       if ($ran != 1) {
-          array_push($re[$x][0], '', 'y-meng', 0, $x, 0);
+          array_push($re[$x][0], '', 'y-meng', 0, $x, 0, $seares, $empty);
       } else {
           $rand = mt_rand(0, 6);
           $grounds ++;
-          array_push($re[$x][0], $ran, 'n-meng '.ranarea($rand), rannum($rand), $x, 0);
+          array_push($re[$x][0], '8', 'n-meng '.ranarea($rand), rannum($rand), $x, 0, $edgeres, $empty);
       }
       $ran = mt_rand(0, 6);
       if ($ran != 1) {
-          array_push($re[0][$x+1], '', 'y-meng', 0, 0, $x+1);
+          array_push($re[0][$x+1], '', 'y-meng', 0, 0, $x+1, $seares, $empty);
       } else {
           $rand = mt_rand(0, 6);
           $grounds ++;
-          array_push($re[0][$x+1], $ran, 'n-meng '.ranarea($rand), rannum($rand), 0, $x+1);
+          array_push($re[0][$x+1], '8', 'n-meng '.ranarea($rand), rannum($rand), 0, $x+1, $edgeres, $empty);
       }
       $ran = mt_rand(0, 6);
       if ($ran != 1) {
-          array_push($re[$Gsize-1][$x], '', 'y-meng', 0, $Gsize-1, $x);
+          array_push($re[$Gsize-1][$x], '', 'y-meng', 0, $Gsize-1, $x, $seares, $empty);
       } else {
           $rand = mt_rand(0, 6);
           $grounds ++;
-          array_push($re[$Gsize-1][$x], $ran, 'n-meng '.ranarea($rand), rannum($rand), $Gsize-1, $x);
+          array_push($re[$Gsize-1][$x], '8', 'n-meng '.ranarea($rand), rannum($rand), $Gsize-1, $x, $edgeres, $empty);
       }
       $ran = mt_rand(0, 6);
       if ($ran != 1) {
-          array_push($re[$x+1][$Gsize-1], '', 'y-meng', 0, $x+1, $Gsize-1);
+          array_push($re[$x+1][$Gsize-1], '', 'y-meng', 0, $x+1, $Gsize-1, $seares, $empty);
       } else {
           $rand = mt_rand(0, 6);
           $grounds ++;
-          array_push($re[$x+1][$Gsize-1], $ran, 'n-meng '.ranarea($rand), rannum($rand), $x+1, $Gsize-1);
+          array_push($re[$x+1][$Gsize-1], '8', 'n-meng '.ranarea($rand), rannum($rand), $x+1, $Gsize-1, $edgeres, $empty);
       }
   }
   for ($x =1;$x<$Gsize-1;$x++) {
@@ -88,15 +116,18 @@ switch ($Gmode) {
           if ($ran == 0) {
               $rand = mt_rand(0, 6);
               $grounds ++;
-              array_push($re[$x][$y], $percent-1, 'n-meng '.ranarea($rand), rannum($rand), $x, $y);
+              $res = randres($rand, 2, $percent);
+              $rescount = $res[5];
+              array_pop($res);
+              array_push($re[$x][$y], $rescount, 'n-meng '.ranarea($rand), rannum($rand), $x, $y, $res, $empty);
           } else {
-              array_push($re[$x][$y], '', 'y-meng', 0, $x, $y);
+              array_push($re[$x][$y], '', 'y-meng', 0, $x, $y, $seares, $empty);
           }
       }
   }
   $output = json_encode($re);
   echo $output;
-  array_push($re, $grounds);
+  array_push($re, [$grounds,0,0,0]);
   $save = json_encode($re);
   file_put_contents('savedmap.json', $save);
   break;
