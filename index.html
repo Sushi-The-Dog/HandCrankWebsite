@@ -17,7 +17,9 @@
                 <div class="col-md-3 column cpanal-meng">
                     <div id="appmain">
                         {{ message }}
-                        <a v-on:click="ShowH"><b>Show/Hide Menu</b></a>
+                        <a v-on:click="ShowH">
+                            <b>Show/Hide Menu</b>
+                        </a>
                     </div>
                     <div id="appcontrolpanel">
                         <div class="button-group button-block">
@@ -97,7 +99,7 @@
                     <div id="appbfgen">
                         <table>
                             <tr v-for="n in length">
-                                <td v-for="items in battlefield[n]" v-on:mouseover="mousein(items[3],items[4])" v-on:mouseout="mouseout(items[3],items[4]);" v-bind:class="items" v-on:click="clicked(items[3],items[4])">
+                                <td v-bind:id="items[3]+'_'+items[4]" v-for="items in battlefield[n]" v-on:mouseover="mousein(items[3],items[4])" v-on:mouseout="mouseout(items[3],items[4]);" v-bind:class="items" v-on:click="clicked(items[3],items[4])">
                                     {{ items[0] }}
                                 </td>
                             </tr>

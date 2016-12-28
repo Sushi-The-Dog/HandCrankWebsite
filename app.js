@@ -37,14 +37,14 @@ var appturn = new Vue({
                 appturn.parttwomessage = 'for';
             }
         },
-        build: function(){
-          console.log("build");
+        build: function() {
+            console.log("build");
         },
-        train: function(){
-          console.log("tarin");
+        train: function() {
+            console.log("tarin");
         },
-        mine: function(){
-          console.log("mine");
+        mine: function() {
+            console.log("mine");
         }
     }
 })
@@ -230,7 +230,8 @@ var appbfgen = new Vue({
         },
         clicked: function(x, y) {
             appdetails.seleted = false;
-            appdetails.display = 'clicked: ' + x + ':' + y;
+            $("#" + x + "_" + y).addClass("select-meng");
+            console.log("#" + x + "_" + y);
         },
         greet: function() {
             console.log("GOODJOB");

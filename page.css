@@ -28,7 +28,7 @@ td {
 }
 
 .n-meng {
-    border: 1px solid black;
+    border: 2px solid #D8D8D8;
     background-color: #f9f9f9;
 }
 
@@ -42,6 +42,10 @@ td {
 
 .mud-meng {
     border: 3px solid #01DFD7;
+}
+
+.select-meng {
+    border: 3px solid #FF4000;
 }
 
 .tblue-meng {
