@@ -24,12 +24,15 @@
                             <button v-on:click="loadmap" type="button" class="button button-caution button-longshadow-left button-rounded button-raised">Load Map</button>
                         </div>
                     </div>
+                    <div id="appdetails">
+                        {{ display }}
+                    </div>
                 </div>
                 <div class="col-md-9 column">
                     <div id="appbfgen">
                         <table>
                             <tr v-for="n in length">
-                                <td v-for="items in battlefield[n]" v-bind:class="items" v-on:click="greet">
+                                <td v-for="items in battlefield[n]" v-on:mouseover="mousein(items[3],items[4])" v-on:mouseout="mouseout(items[3],items[4]);" v-bind:class="items" v-on:click="clicked(items[3],items[4])">
                                     {{ items[0] }}
                                 </td>
                             </tr>
@@ -41,5 +44,4 @@
 
     </body>
     <script src="app.js"></script>
-    <script src="app-bfgen.js"></script>
 </html>
