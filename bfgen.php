@@ -3,7 +3,7 @@ $Gmode = $_GET['mode'];
 $Gsize = $_GET['size'];
 $seares = [1,0,0,0,0];
 $edgeres = [1,2,2,2,1];
-$empty = [0,0,0];
+$empty = [[0,0],[0,0],[0,0]];
 function ranarea($ran)
 {
     if ($ran == 0) {

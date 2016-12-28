@@ -17,7 +17,8 @@ function dothis($map)
                 if ($rand == $cound) {
                     $map[$x][$y][1] .= ' tblue-meng';
                     $cound = $rand+$landsize;
-                    $map[$x][$y][6][0] = 1;
+                    $map[$x][$y][6][0][1] = 1;
+                    $map[$x][$y][6][0][0] = 1;
                     $map[$size][1] = 1;
                     break;
                 }
