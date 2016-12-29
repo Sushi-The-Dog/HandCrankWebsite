@@ -39,7 +39,11 @@ var appturn = new Vue({
             }
         },
         build: function() {
-            console.log(appbfgen.battlefield);
+            layer.open({
+                type: 1,
+                title: 'Build',
+                content: Frame.building()
+            });
         },
         train: function() {
             console.log("tarin");
@@ -296,10 +300,40 @@ var appbfgen = new Vue({
                         type: 'POST',
                         data: {
                             'x': x,
-                            'y': y
+                            'y': y,
+                            'playerid': appplayer.playerid
                         },
                         success: function(data) {
-                            document.getElementById("showerror").innerHTML = data;
+                            data = JSON.parse(data);
+                            var dis = '';
+                            for (var i = 0; i < data.length; i++) {
+                                appbfgen.battlefield[x][y][5][data[i][0]] += data[i][2];
+                                switch (data[i][0]) {
+                                    case 0:
+                                        appplayer.food += data[i][1];
+                                        dis += 'F:' + data[i][1];
+                                        break;
+                                    case 1:
+                                        appplayer.production += data[i][1];
+                                        dis += 'P:' + data[i][1];
+                                        break;
+                                    case 2:
+                                        appplayer.culture += data[i][1];
+                                        dis += 'C:' + data[i][1];
+                                        break;
+                                    case 3:
+                                        appplayer.gold += data[i][1];
+                                        dis += 'G:' + data[i][1];
+                                        break;
+                                    case 4:
+                                        appplayer.happiness += data[i][1];
+                                        dis += 'H:' + data[i][1];
+                                        break;
+                                    default:
+                                        document.getElementById("showerror").innerHTML = data;
+                                }
+                            }
+                            appdetails.display = dis;
                         },
                         error: function() {
                             console.log("ERROR with failed REQUEST");
