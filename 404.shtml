@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <title>404</title>
+        <script src="library/vue.js"></script>
+        <script src="library/jquery.min.js" type="text/javascript"></script>
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <link rel="stylesheet" href="library/bootstrap.min.css">
+        <link rel="stylesheet" href="library/buttons.css">
+        <link rel="stylesheet" href="style/love.css">
+    </head>
+    <body>
+        <canvas id="canvas">Canvas is not supported in your browser.</canvas>
+        <div class="container-fluid ab-meng">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="hero-unit" id="love">
+                        <h1>{{tst}}
+                        </h1>
+                        <h2>
+                            {{hope}}
+                        </h2>
+                        <p>
+                            <!-- <a v-on:click="click" class="button button-caution button-longshadow-left button-block button-rounded button-raised" href="#">{{but}}</a> -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script/404.js"></script>
+    </body>
+</html>
