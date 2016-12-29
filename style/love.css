@@ -1,0 +1,21 @@
+/*body {
+    margin: 20%;
+}*/
+
+body {
+    background: #000;
+    margin: 0;
+}
+
+canvas {
+    cursor: crosshair;
+    display: block;
+}
+
+.ab-meng {
+    position: absolute;
+    left: 100px;
+    top: 150px;
+    color: white;
+    font-family: Monospace ;
+}
