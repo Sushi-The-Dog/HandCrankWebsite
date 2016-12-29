@@ -39,12 +39,13 @@ var appturn = new Vue({
             }
         },
         build: function() {
-            console.log("build");
+            console.log(appbfgen.battlefield);
         },
         train: function() {
             console.log("tarin");
         },
         mine: function() {
+            console.log(appbfgen.battlefield);
             var size = appbfgen.battlefield.length - 1;
             for (i = 0; i < size; i++) {
                 for (j = 0; j < size; j++) {
@@ -294,10 +295,11 @@ var appbfgen = new Vue({
                         url: 'mine.php',
                         type: 'POST',
                         data: {
-                            'location': target
+                            'x': x,
+                            'y': y
                         },
                         success: function(data) {
-                            data = JSON.parse(data);
+                            document.getElementById("showerror").innerHTML = data;
                         },
                         error: function() {
                             console.log("ERROR with failed REQUEST");
