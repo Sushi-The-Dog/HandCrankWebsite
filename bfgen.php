@@ -125,16 +125,16 @@ switch ($Gmode) {
           }
       }
   }
-  $output = json_encode($re);
-  echo $output;
-  array_push($re, [$grounds,0,0,0]);
+  $newresstorage = [0,0,0,0,0];
+  array_push($re, [$grounds,0,[$newresstorage,$newresstorage,$newresstorage,$newresstorage],0]);
   $save = json_encode($re);
+  echo $save;
   file_put_contents('savedmap.json', $save);
   break;
   case 1:
   $contentd = file_get_contents('savedmap.json');
   $edit = json_decode($contentd);
-  array_pop($edit);
+  // array_pop($edit);
   $contentd = json_encode($edit);
   echo $contentd;
   break;
