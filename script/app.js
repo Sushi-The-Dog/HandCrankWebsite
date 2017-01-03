@@ -75,7 +75,7 @@ var appcontrolpanel = new Vue({
     methods: {
         loadmap: function(items) {
             $.ajax({
-                url: 'bfgen.php',
+                url: 'bg/bfgen.php',
                 type: 'GET',
                 data: {
                     'mode': 1,
@@ -101,7 +101,7 @@ var appcontrolpanel = new Vue({
         },
         genspawn: function() {
             $.ajax({
-                url: 'Spawn.php',
+                url: 'bg/Spawn.php',
                 type: 'GET',
                 data: {
                     'mode': 0
@@ -130,7 +130,7 @@ var appcontrolpanel = new Vue({
         },
         genmap: function() {
             $.ajax({
-                url: 'bfgen.php',
+                url: 'bg/bfgen.php',
                 type: 'GET',
                 data: {
                     'mode': 0,
@@ -296,7 +296,7 @@ var appbfgen = new Vue({
                     }
                     appturn.currentcolored = [];
                     $.ajax({
-                        url: 'mine.php',
+                        url: 'bg/mine.php',
                         type: 'POST',
                         data: {
                             'x': x,
